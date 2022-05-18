@@ -401,6 +401,25 @@ conn ios_ikev2
     dpdaction=clear
     fragmentation=yes
     auto=add
+    
+conn android_ikev2
+    keyexchange=ikev2
+    ike=aes128-aes256-sha1-modp3072-modp2048,3des-sha1-md5-modp1024,aes256-sha512-modp4096,aes128-sha256-modp3072
+    esp=aes128-sha1,aes256-sha256_96,3des-sha1,aes256-sha1
+    rekey=no
+    left=%defaultroute
+    leftid=${vps_ip}
+    leftsendcert=always
+    leftsubnet=0.0.0.0/0
+    leftcert=server.cert.pem
+    right=%any
+    rightauth=eap-mschapv2
+    rightsourceip=10.31.2.0/24
+    rightsendcert=never
+    eap_identity=%any
+    dpdaction=clear
+    fragmentation=yes
+    auto=add
 
 conn windows7
     keyexchange=ikev2
